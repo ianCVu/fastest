@@ -4,12 +4,16 @@
     <h1 id="announcement"></h1>
     <script type="module">
       async function getAnnouncment() {
-        let text = await fetch("https://script.googleusercontent.com/a/macros/mytusd.org/echo?user_content_key=AUkAhnTyExqztUXq4WLKRXQhYlBFGXUxeRQ38F2zt-Z8mReiz5Cq_sP1cWOeBDFPtMvU7xENPibJ_WpmWj9GuRx8QYb_6QQIIS1LVRJ0OyR80lf63lJBlqb7E368neYoMxKi4qUbhGufpVfv16kQMQIKBCW1SffFgrBIlJ4Yx4SxU_bMbNA9XcOMRV9e-rIgHE-dHF63j_Kl6kmVz2dgPT383h6RUyOt5_122Pgub0LOhmJ1bJjamYd1i2ElgPpASvx72zszGLz8BlOfokvOjYKcp2ZjX_3Ta8MTf7xyndoN&lib=MewsMQw59iGD_cnaUaEGOWMKtIImjw75Y", {
-          method : "GET",
-          redirect : "follow"
-        });
-        text = await text.json();
-        document.getElementById("announcement").textContent = text.content;
+        try {
+          let text = await fetch("https://script.googleusercontent.com/a/macros/mytusd.org/echo?user_content_key=AUkAhnTyExqztUXq4WLKRXQhYlBFGXUxeRQ38F2zt-Z8mReiz5Cq_sP1cWOeBDFPtMvU7xENPibJ_WpmWj9GuRx8QYb_6QQIIS1LVRJ0OyR80lf63lJBlqb7E368neYoMxKi4qUbhGufpVfv16kQMQIKBCW1SffFgrBIlJ4Yx4SxU_bMbNA9XcOMRV9e-rIgHE-dHF63j_Kl6kmVz2dgPT383h6RUyOt5_122Pgub0LOhmJ1bJjamYd1i2ElgPpASvx72zszGLz8BlOfokvOjYKcp2ZjX_3Ta8MTf7xyndoN&lib=MewsMQw59iGD_cnaUaEGOWMKtIImjw75Y", {
+            method : "GET",
+            redirect : "follow"
+          });
+          text = await text.json();
+          document.getElementById("announcement").textContent = text.content;
+        } catch (e) {
+          alert(e);
+        }
       }
       getAnnouncment();
     </script>
