@@ -2,6 +2,7 @@
   <head></head>
   <body>
     <h1 id="announcement"></h1>
+    <input id="input">
     <script type="module">
       async function getAnnouncment() {
         try {
@@ -16,6 +17,19 @@
         }
       }
       getAnnouncment();
+      document.getElementById("input").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+          async function newAnnouncement() {
+            await fetch("https://script.google.com/macros/s/AKfycbybjCeTsHXdN0J1BD3NdwVWkQ6P2WOXo1vhQPTW6EbLtXFeNVxBjXAooWkLWMhQKHXvHQ/exec", {
+              method : "POST",
+              header : {
+                "Content-Type" : "plain/text"
+              },
+              body : input.value
+            });
+        }
+          newAnnouncement();
+      });
     </script>
   </body>
 </html>
